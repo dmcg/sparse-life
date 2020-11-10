@@ -57,7 +57,9 @@ private fun Cell.neighbours(): List<Cell> {
     )
 }
 
-fun Board.step(): Board = setOf(0 to 1)
+fun Board.step(): Board = this.filter { cell ->
+    this.countNeighbours(cell) > 1
+}.toSet()
 
 
 typealias Cell = Pair<Int, Int>
