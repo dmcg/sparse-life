@@ -5,11 +5,6 @@ import kotlin.test.assertTrue
 class Tests {
 
     @Test
-    fun `create board`() {
-        val board: Board = boardOf(0 to 0, 0 to 1, 0 to 2)
-    }
-
-    @Test
     fun `neighbours of a cell`() {
         val cell = 1 to 1
         assertEquals(
