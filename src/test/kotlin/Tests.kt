@@ -32,15 +32,13 @@ class Tests {
     @Test
     fun `cell with 2 neighbours lives`() {
         val board = boardOf(0 to 0, 0 to 1, 0 to 2)
-        val next = board.step()
-        assertTrue(next.contains(0 to 1))
+        assertTrue(board.step().contains(0 to 1))
     }
 
     @Test
     fun `cell with 1 neighbour dies`() {
         val board = boardOf(0 to 0, 0 to 1, 0 to 2)
-        val next = board.step()
-        assertEquals(next, setOf(0 to 1))
+        assertEquals(board.step(), setOf(0 to 1))
     }
 
 }
