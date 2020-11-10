@@ -22,6 +22,16 @@ class Tests {
         val next: Board = board.step()
         assertEquals(next, setOf(0 to 1))
     }
+
+    @Test
+    fun `neighbours of a cell`() {
+        val cell = 1 to 1
+        cell.neighbours()
+    }
+}
+
+private fun Pair<Int, Int>.neighbours(): List<Pair<Int, Int>> {
+    return emptyList()
 }
 
 fun Board.step(): Board = setOf(0 to 1)
