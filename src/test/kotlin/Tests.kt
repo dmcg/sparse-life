@@ -33,6 +33,7 @@ class Tests {
     fun `cell with 1 neighbour dies`() {
         val board = boardOf(0 to 0, 0 to 1, 0 to 2)
         assertTrue(0 to 0 !in board.step())
+        assertTrue(0 to 2 !in board.step())
     }
 
     @Test
