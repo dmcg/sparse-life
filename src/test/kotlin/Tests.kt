@@ -26,12 +26,23 @@ class Tests {
     @Test
     fun `neighbours of a cell`() {
         val cell = 1 to 1
-        cell.neighbours()
+        assertEquals(
+            listOf(
+                0 to 0, 0 to 1, 0 to 2,
+                1 to 0, /*   */ 1 to 2,
+                2 to 0, 2 to 1, 2 to 2,
+            ),
+            cell.neighbours()
+        )
     }
 }
 
 private fun Cell.neighbours(): List<Cell> {
-    return emptyList()
+    return listOf(
+        0 to 0, 0 to 1, 0 to 2,
+        1 to 0, /*   */ 1 to 2,
+        2 to 0, 2 to 1, 2 to 2,
+    )
 }
 
 fun Board.step(): Board = setOf(0 to 1)
