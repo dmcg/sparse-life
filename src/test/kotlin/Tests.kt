@@ -67,12 +67,12 @@ fun Board.step(): Board =
         shouldBeAlive(isAliveNow = true, liveNeighbours(cell).count())
     }.toSet() + flatMap { cell ->
         deadNeighbours(cell).filter { deadCell ->
-            liveNeighbours(deadCell).count() == 3
+            shouldBeAlive(isAliveNow = false, liveNeighbours(deadCell).count())
         }
     }
 
 fun shouldBeAlive(isAliveNow: Boolean, neighbourCount: Int) =
-    isAliveNow && neighbourCount in 2..3
+    (isAliveNow && neighbourCount in 2..3) || (!isAliveNow && neighbourCount == 3)
 
 typealias Cell = Pair<Int, Int>
 typealias Board = Set<Cell>
