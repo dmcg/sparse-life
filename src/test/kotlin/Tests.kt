@@ -5,19 +5,6 @@ import kotlin.test.assertTrue
 class Tests {
 
     @Test
-    fun `neighbours of a cell`() {
-        val cell = 1 to 1
-        assertEquals(
-            listOf(
-                0 to 0, 0 to 1, 0 to 2,
-                1 to 0, /*   */ 1 to 2,
-                2 to 0, 2 to 1, 2 to 2,
-            ),
-            cell.neighbours()
-        )
-    }
-
-    @Test
     fun `count neighbours of a cell`() {
         val board = boardOf(0 to 0, 0 to 1, 0 to 2)
         val result = board.map { board.countNeighbours(it) }
