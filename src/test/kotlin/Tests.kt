@@ -7,8 +7,15 @@ class Tests {
         val board: Board = boardOf(0 to 0, 0 to 1, 0 to 2)
     }
 
+    @Test
+    fun `cell with 2 neighbours lives`() {
+        val board: Board = boardOf(0 to 0, 0 to 1, 0 to 2)
+        val next: Board = board.step()
+    }
+
 }
 
-typealias Board = Set<Pair<Int, Int>>
 
-private fun boardOf(vararg liveCells: Pair<Int, Int>) = setOf(*liveCells)
+ptypealias Board = Set<Pair<Int, Int>>
+fun boardOf(vararg liveCells: Pair<Int, Int>) = setOf(*liveCells)
+fun Board.step(): Board = this
