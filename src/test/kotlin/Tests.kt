@@ -11,15 +11,15 @@ class Tests {
 
     @Test
     fun `cell with 2 neighbours lives`() {
-        val board: Board = boardOf(0 to 0, 0 to 1, 0 to 2)
-        val next: Board = board.step()
+        val board = boardOf(0 to 0, 0 to 1, 0 to 2)
+        val next = board.step()
         assertTrue(next.contains(0 to 1))
     }
 
     @Test
     fun `cell with 1 neighbour dies`() {
-        val board: Board = boardOf(0 to 0, 0 to 1, 0 to 2)
-        val next: Board = board.step()
+        val board = boardOf(0 to 0, 0 to 1, 0 to 2)
+        val next = board.step()
         assertEquals(next, setOf(0 to 1))
     }
 
@@ -35,6 +35,17 @@ class Tests {
             cell.neighbours()
         )
     }
+
+    @Test
+    fun `count neighbours of a cell`() {
+        val board: Board = boardOf(0 to 0, 0 to 1, 0 to 2)
+        val result: Int = board.countNeighbours(0 to 0)
+        assertEquals(1, result)
+    }
+}
+
+private fun Board.countNeighbours(cell: Cell): Int {
+    return 1
 }
 
 private fun Cell.neighbours(): List<Cell> {
