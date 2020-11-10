@@ -45,9 +45,11 @@ class Tests {
 
 
 fun Board.step(): Board = this.filter { cell ->
-    this.countNeighbours(cell) > 1
+    shouldBeAlive(isAliveNow = true, this.countNeighbours(cell))
 }.toSet()
 
+fun shouldBeAlive(isAliveNow: Boolean, neighbourCount: Int) =
+    isAliveNow && neighbourCount in 2..3
 
 typealias Cell = Pair<Int, Int>
 typealias Board = Set<Cell>
