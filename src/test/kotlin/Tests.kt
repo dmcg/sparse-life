@@ -10,20 +10,6 @@ class Tests {
     }
 
     @Test
-    fun `cell with 2 neighbours lives`() {
-        val board = boardOf(0 to 0, 0 to 1, 0 to 2)
-        val next = board.step()
-        assertTrue(next.contains(0 to 1))
-    }
-
-    @Test
-    fun `cell with 1 neighbour dies`() {
-        val board = boardOf(0 to 0, 0 to 1, 0 to 2)
-        val next = board.step()
-        assertEquals(next, setOf(0 to 1))
-    }
-
-    @Test
     fun `neighbours of a cell`() {
         val cell = 1 to 1
         assertEquals(
@@ -42,7 +28,32 @@ class Tests {
         val result = board.map { board.countNeighbours(it) }
         assertEquals(listOf(1, 2, 1), result)
     }
+
+    @Test
+    fun `cell with 2 neighbours lives`() {
+        val board = boardOf(0 to 0, 0 to 1, 0 to 2)
+        val next = board.step()
+        assertTrue(next.contains(0 to 1))
+    }
+
+    @Test
+    fun `cell with 1 neighbour dies`() {
+        val board = boardOf(0 to 0, 0 to 1, 0 to 2)
+        val next = board.step()
+        assertEquals(next, setOf(0 to 1))
+    }
+
 }
+
+
+fun Board.step(): Board = this.filter { cell ->
+    this.countNeighbours(cell) > 1
+}.toSet()
+
+
+typealias Cell = Pair<Int, Int>
+typealias Board = Set<Cell>
+fun boardOf(vararg liveCells: Cell) = setOf(*liveCells)
 
 private fun Board.countNeighbours(cell: Cell): Int =
     cell.neighbours().count { it in this }
@@ -56,12 +67,3 @@ private fun Cell.neighbours(): List<Cell> {
         rw + 1 to cl - 1, rw + 1 to cl, rw + 1 to cl + 1,
     )
 }
-
-fun Board.step(): Board = this.filter { cell ->
-    this.countNeighbours(cell) > 1
-}.toSet()
-
-
-typealias Cell = Pair<Int, Int>
-typealias Board = Set<Cell>
-fun boardOf(vararg liveCells: Cell) = setOf(*liveCells)
