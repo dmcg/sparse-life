@@ -61,9 +61,10 @@ class Tests {
 }
 
 
-fun Board.step(): Board = this.filter { cell ->
-    shouldBeAlive(isAliveNow = true, this.liveNeighbours(cell).count())
-}.toSet()
+fun Board.step(): Board =
+    filter { cell ->
+        shouldBeAlive(isAliveNow = true, this.liveNeighbours(cell).count())
+    }.toSet()
 
 fun shouldBeAlive(isAliveNow: Boolean, neighbourCount: Int) =
     isAliveNow && neighbourCount in 2..3
@@ -77,6 +78,9 @@ private fun Board.countNeighbours(cell: Cell): Int =
 
 private fun Board.liveNeighbours(cell: Cell): List<Cell> =
     cell.neighbours().filter { it in this }
+
+private fun Board.deadNeighbours(cell: Cell): List<Cell> =
+    cell.neighbours().filter { it !in this }
 
 private fun Cell.neighbours(): List<Cell> {
     val rw = this.first
