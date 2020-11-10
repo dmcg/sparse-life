@@ -56,6 +56,9 @@ class Tests {
     }
 }
 
+typealias Cell = Pair<Int, Int>
+typealias Board = Set<Cell>
+fun boardOf(vararg liveCells: Cell) = setOf(*liveCells)
 
 fun Board.step(): Board =
     filter { cell ->
@@ -66,13 +69,9 @@ fun Board.step(): Board =
         }
     }
 
-fun shouldBeAlive(isAliveNow: Boolean, neighbourCount: Int) =
+private fun shouldBeAlive(isAliveNow: Boolean, neighbourCount: Int) =
     (isAliveNow && neighbourCount in 2..3) ||
     (!isAliveNow && neighbourCount == 3)
-
-typealias Cell = Pair<Int, Int>
-typealias Board = Set<Cell>
-fun boardOf(vararg liveCells: Cell) = setOf(*liveCells)
 
 private fun Board.countNeighbours(cell: Cell): Int =
     liveNeighbours(cell).count()
