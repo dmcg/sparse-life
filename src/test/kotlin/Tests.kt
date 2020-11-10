@@ -41,9 +41,9 @@ private fun Cell.neighbours(): List<Cell> {
     val rw = this.first
     val cl = this.second
     return listOf(
-        -1 to -1, -1 to 0, -1 to +1,
-         0 to -1, /*     */ 0 to +1,
-        +1 to -1, +1 to 0, +1 to +1,
+        -1 to -1, -1 to 0, -1 to 1,
+         0 to -1, /*     */ 0 to 1,
+         1 to -1,  1 to 0,  1 to 1,
     ).map { (first, second) ->
         rw + first to cl + second
     }
