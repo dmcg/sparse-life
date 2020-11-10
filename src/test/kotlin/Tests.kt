@@ -30,15 +30,9 @@ class Tests {
     }
 
     @Test
-    fun `cell with 4 neighbours dies`() {
-        val board = boardOf(0 to 0, 0 to 1, -1 to 1, 1 to 1, 0 to 2)
-        assertTrue(0 to 1 !in board.step())
-    }
-
-    @Test
-    fun `cell with 3 neighbours lives`() {
-        val board = boardOf(0 to 0, 0 to 1, 1 to 1, 0 to 2)
-        assertTrue(board.step().contains(0 to 1))
+    fun `cell with 1 neighbour dies`() {
+        val board = boardOf(0 to 0, 0 to 1, 0 to 2)
+        assertEquals(board.step(), setOf(0 to 1))
     }
 
     @Test
@@ -48,9 +42,15 @@ class Tests {
     }
 
     @Test
-    fun `cell with 1 neighbour dies`() {
-        val board = boardOf(0 to 0, 0 to 1, 0 to 2)
-        assertEquals(board.step(), setOf(0 to 1))
+    fun `cell with 3 neighbours lives`() {
+        val board = boardOf(0 to 0, 0 to 1, 1 to 1, 0 to 2)
+        assertTrue(board.step().contains(0 to 1))
+    }
+
+    @Test
+    fun `cell with 4 neighbours dies`() {
+        val board = boardOf(0 to 0, 0 to 1, -1 to 1, 1 to 1, 0 to 2)
+        assertTrue(0 to 1 !in board.step())
     }
 
 }
