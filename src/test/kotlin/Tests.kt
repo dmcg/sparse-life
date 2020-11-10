@@ -73,7 +73,10 @@ typealias Board = Set<Cell>
 fun boardOf(vararg liveCells: Cell) = setOf(*liveCells)
 
 private fun Board.countNeighbours(cell: Cell): Int =
-    cell.neighbours().count { it in this }
+    liveNeighbours(cell).count()
+
+private fun Board.liveNeighbours(cell: Cell): List<Cell> =
+    cell.neighbours().filter { it in this }
 
 private fun Cell.neighbours(): List<Cell> {
     val rw = this.first
