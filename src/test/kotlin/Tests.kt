@@ -38,10 +38,16 @@ class Tests {
 }
 
 private fun Cell.neighbours(): List<Cell> {
+    val rw = this.first
+    val up = rw - 1
+    val dn = rw + 1
+    val cl = this.second
+    val lf = cl - 1
+    val rt = cl + 1
     return listOf(
-        0 to 0, 0 to 1, 0 to 2,
-        1 to 0, /*   */ 1 to 2,
-        2 to 0, 2 to 1, 2 to 2,
+        up to lf, up to cl, up to rt,
+        rw to lf, /*     */ rw to rt,
+        dn to lf, dn to cl, dn to rt,
     )
 }
 
