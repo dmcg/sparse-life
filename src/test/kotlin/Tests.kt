@@ -38,15 +38,14 @@ class Tests {
 
     @Test
     fun `count neighbours of a cell`() {
-        val board: Board = boardOf(0 to 0, 0 to 1, 0 to 2)
-        val result: List<Int> = board.map { board.countNeighbours(it) }
+        val board = boardOf(0 to 0, 0 to 1, 0 to 2)
+        val result = board.map { board.countNeighbours(it) }
         assertEquals(listOf(1, 2, 1), result)
     }
 }
 
-private fun Board.countNeighbours(cell: Cell): Int {
-    return cell.neighbours().count { it in this }
-}
+private fun Board.countNeighbours(cell: Cell): Int =
+    cell.neighbours().count { it in this }
 
 private fun Cell.neighbours(): List<Cell> {
     val rw = this.first
