@@ -64,8 +64,12 @@ class Tests {
 
 fun Board.step(): Board =
     filter { cell ->
-        shouldBeAlive(isAliveNow = true, this.liveNeighbours(cell).count())
-    }.toSet()
+        shouldBeAlive(isAliveNow = true, liveNeighbours(cell).count())
+    }.toSet() + flatMap { cell ->
+        deadNeighbours(cell).filter { deadCell ->
+            liveNeighbours(deadCell).count() == 3
+        }
+    }
 
 fun shouldBeAlive(isAliveNow: Boolean, neighbourCount: Int) =
     isAliveNow && neighbourCount in 2..3
