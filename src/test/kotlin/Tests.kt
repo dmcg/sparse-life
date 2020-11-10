@@ -53,6 +53,11 @@ class Tests {
         assertTrue(0 to 1 !in board.step())
     }
 
+//    @Test
+//    fun `dead cell with 3 neighbours comes to live`() {
+//        val board = boardOf(0 to 0, 1 to 1, 0 to 2)
+//        assertTrue(board.step().contains(0 to 1))
+//    }
 }
 
 
