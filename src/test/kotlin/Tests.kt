@@ -30,6 +30,12 @@ class Tests {
     }
 
     @Test
+    fun `cell with 3 neighbours lives`() {
+        val board = boardOf(0 to 0, 0 to 1, 1 to 1, 0 to 2)
+        assertTrue(board.step().contains(0 to 1))
+    }
+
+    @Test
     fun `cell with 2 neighbours lives`() {
         val board = boardOf(0 to 0, 0 to 1, 0 to 2)
         assertTrue(board.step().contains(0 to 1))
