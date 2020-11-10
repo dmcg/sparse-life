@@ -45,7 +45,7 @@ class Tests {
     @Test
     fun `cell with 3 neighbours lives`() {
         val board = boardOf(0 to 0, 0 to 1, 1 to 1, 0 to 2)
-        assertTrue(board.step().contains(0 to 1))
+        assertTrue(0 to 1 in board.step())
     }
 
     @Test
@@ -57,7 +57,7 @@ class Tests {
     @Test
     fun `dead cell with 3 neighbours comes to live`() {
         val board = boardOf(0 to 0, 0 to 1, 0 to 2)
-        assertTrue(board.step().contains(1 to 1))
+        assertTrue(1 to 1 in board.step())
     }
 }
 
