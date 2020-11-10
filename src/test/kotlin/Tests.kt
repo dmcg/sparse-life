@@ -38,13 +38,13 @@ class Tests {
 }
 
 private fun Cell.neighbours(): List<Cell> {
+    val rw = this.first
+    val cl = this.second
     return listOf(
-        -1 to -1, -1 to 0, -1 to 1,
-         0 to -1, /*     */ 0 to 1,
-         1 to -1,  1 to 0,  1 to 1,
-    ).map { (first, second) ->
-        this.first + first to this.second + second
-    }
+        rw - 1 to cl - 1, rw - 1 to cl, rw - 1 to cl + 1,
+        rw to cl - 1, /*             */ rw to cl + 1,
+        rw + 1 to cl - 1, rw + 1 to cl, rw + 1 to cl + 1,
+    )
 }
 
 fun Board.step(): Board = setOf(0 to 1)
@@ -52,5 +52,4 @@ fun Board.step(): Board = setOf(0 to 1)
 
 typealias Cell = Pair<Int, Int>
 typealias Board = Set<Cell>
-
 fun boardOf(vararg liveCells: Cell) = setOf(*liveCells)
