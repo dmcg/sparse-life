@@ -72,7 +72,8 @@ fun Board.step(): Board =
     }
 
 fun shouldBeAlive(isAliveNow: Boolean, neighbourCount: Int) =
-    (isAliveNow && neighbourCount in 2..3) || (!isAliveNow && neighbourCount == 3)
+    (isAliveNow && neighbourCount in 2..3) ||
+    (!isAliveNow && neighbourCount == 3)
 
 typealias Cell = Pair<Int, Int>
 typealias Board = Set<Cell>
