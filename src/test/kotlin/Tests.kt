@@ -30,12 +30,13 @@ class Tests {
     }
 }
 
-private fun Pair<Int, Int>.neighbours(): List<Pair<Int, Int>> {
+private fun Cell.neighbours(): List<Cell> {
     return emptyList()
 }
 
 fun Board.step(): Board = setOf(0 to 1)
 
 
-typealias Board = Set<Pair<Int, Int>>
-fun boardOf(vararg liveCells: Pair<Int, Int>) = setOf(*liveCells)
+typealias Cell = Pair<Int, Int>
+typealias Board = Set<Cell>
+fun boardOf(vararg liveCells: Cell) = setOf(*liveCells)
