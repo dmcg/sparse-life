@@ -62,7 +62,7 @@ class Tests {
 
 
 fun Board.step(): Board = this.filter { cell ->
-    shouldBeAlive(isAliveNow = true, this.countNeighbours(cell))
+    shouldBeAlive(isAliveNow = true, this.liveNeighbours(cell).count())
 }.toSet()
 
 fun shouldBeAlive(isAliveNow: Boolean, neighbourCount: Int) =
